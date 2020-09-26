@@ -18,3 +18,14 @@ services:
       - "3000:3000"
     links:
       - db
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    command: /bin/sh -c "yarn && yarn start"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 4000:3000
